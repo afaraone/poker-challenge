@@ -1,23 +1,34 @@
-import {deck, deal} from './deck';
+import {deck, shuffle, deal} from './deck';
 
 describe("deck", () =>{
+  let cards = deck();
+
   it('returns 52 cards objects', () => {
-    expect(deck()).toHaveLength(52);
+    expect(cards).toHaveLength(52);
   });
 
   it('card object contains rank and suit keys', () => {
-    expect(deck()[0]).toHaveProperty('suit');
-    expect(deck()[0]).toHaveProperty('rank');
+    expect(cards[0]).toHaveProperty('suit');
+    expect(cards[0]).toHaveProperty('rank');
   });
 
   it('all cards are unique', () => {
-    let uniqueItems = Array.from(new Set(deck()));
-    expect(deck()).toEqual(uniqueItems);
+    // create a copy of cards that only has unique elements
+    let uniqueCards = Array.from(new Set(cards));
+    expect(cards).toEqual(uniqueCards);
+  });
+});
+
+describe('shuffle', () => {
+  it('returns randomly sorted copy of array', () => {
+    let array = [1, 2, 3, 4];
+    expect(shuffle(array)).not.toEqual(array);
   });
 });
 
 describe('deal', () => {
-  let dealtCards = deal(4, 5)
+  let dealtCards = deal(4, 5);
+
   it('returns an array equal to length of numPlayers', () => {
     expect(dealtCards).toHaveLength(4);
   });

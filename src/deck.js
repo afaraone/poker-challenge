@@ -7,7 +7,13 @@ const deck = () => {
       cards.push({rank: rank, suit: suit});
     };
   };
-  return cards
+  return shuffle(cards);
+};
+
+const shuffle = array => {
+  return array.slice().sort(() => {
+    return Math.random() - 0.5;
+  });
 };
 
 const deal = (numPlayers, numCards) => {
@@ -24,4 +30,4 @@ const deal = (numPlayers, numCards) => {
   return dealtCards;
 };
 
-export {deck, deal}
+export {deck, deal, shuffle}
