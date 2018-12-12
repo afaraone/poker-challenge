@@ -1,4 +1,4 @@
-import {deck} from './deck';
+import {deck, deal} from './deck';
 
 describe("deck", () =>{
   it('returns 52 cards objects', () => {
@@ -13,5 +13,16 @@ describe("deck", () =>{
   it('all cards are unique', () => {
     let uniqueItems = Array.from(new Set(deck()));
     expect(deck()).toEqual(uniqueItems);
+  });
+});
+
+describe('deal', () => {
+  let dealtCards = deal(4, 5)
+  it('returns an array equal to length of numPlayers', () => {
+    expect(dealtCards).toHaveLength(4);
+  });
+
+  it('each array has length of numCards', () => {
+    expect(dealtCards[0]).toHaveLength(5);
   });
 });

@@ -10,4 +10,18 @@ const deck = () => {
   return cards
 };
 
-export {deck}
+const deal = (numPlayers, numCards) => {
+  let dealtCards = [];
+  let cards = deck();
+
+  let endPoint = 0;
+  for (let i = 0; i < numPlayers; i++) {
+    let startPoint = endPoint;
+    endPoint = startPoint + numCards;
+    dealtCards.push(cards.slice(startPoint, endPoint))
+    startPoint = endPoint;
+  };
+  return dealtCards;
+};
+
+export {deck, deal}
