@@ -16,4 +16,4 @@ describe('Game', () => {
       expect(game.players).toEqual(mockDealtCards);
     });
   });
-  });
+});
