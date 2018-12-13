@@ -10,12 +10,15 @@ const deck = () => {
   return shuffle(cards);
 };
 
+
+// returns an randomly sorted array
 const shuffle = array => {
   return array.slice().sort(() => {
     return Math.random() - 0.5;
   });
 };
 
+// returns numPlayers * arrays of numCards * cards 
 const deal = (numPlayers, numCards) => {
   let dealtCards = [];
   let cards = deck();
