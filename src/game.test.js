@@ -3,11 +3,16 @@ import * as deck from './deck';
 import Player from './player';
 import {mockDealtCards} from './mocks';
 
-// mocking Player class
+// mocking Player class, first time instantiated has score as 1
+// all other times has score 1
 jest.mock('./player', () => {
-  return jest.fn().mockImplementation(() => {
-    return {score: 1};
-  });
+  return jest.fn()
+    .mockImplementationOnce(() => {
+      return {score: 2};
+    })
+    .mockImplementation(() => {
+      return {score: 1};
+    });
 });
 
 // spies on deal method
@@ -27,12 +32,16 @@ describe('Game', () => {
       expect(Player).toHaveBeenCalledTimes(3);
     });
 
-    it('player object is passed element in argument array', () => {
+    it('player object is passed element from deal fn', () => {
       expect(Player).toHaveBeenCalledWith(mockDealtCards[0]);
     });
 
     it('numPlayer * Player objects set to game.players', () => {
       expect(game.players).toHaveLength(3);
+    });
+
+    it('adds winner Player obj to this.winner', () => {
+      expect(game.winner).toEqual({score: 2});
     });
   });
 

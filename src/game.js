@@ -11,6 +11,7 @@ class Game {
     cards.forEach(hand => {
       this.players.push(new Player(hand));
     });
+    this.winner = this.calculateWinner(this.players);
   };
 
   calculateWinner(players) {
