@@ -2,7 +2,7 @@ import {deal} from './deck';
 
 class Game {
   constructor() {
-    players: null
+    this.players = null
   };
 
   play (numPlayers, numCards) {
