@@ -10,4 +10,11 @@ const rankSum = (array) => {
   return array.reduce((a, b) => a + b);
 };
 
-export {rankSum, getRankArray};
+const isStraight = (array) => {
+  for (let i = 0; i < array.length -1; i++) {
+    if (array[i] +1 !== array[i + 1]) return false
+  }
+  return true
+}
+
+export {rankSum, getRankArray, isStraight};

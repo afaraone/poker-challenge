@@ -13,3 +13,15 @@ describe('rankSum', () => {
     expect(rankSum(ranks)).toEqual(10);
   });
 });
+
+describe('isStraight', () => {
+  it('returns true if array is sequence', () => {
+    let ranks = [2,3,4,5];
+    expect(isStraight(ranks)).toEqual(true);
+  });
+
+  it('returns false if array is not sequence', () => {
+    let ranks = [2,3,4,4];
+    expect(isStraight(ranks)).toEqual(false);
+  });
+});
