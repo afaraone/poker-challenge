@@ -1,9 +1,13 @@
-const rankScore = (hand) => {
-  let total = 0
+const getRankArray = (hand) => {
+  let ranks = []
   hand.forEach(card => {
-    total += card.rank;
+    ranks.push(card.rank);
   });
-  return total;
+  return ranks
+}
+
+const rankSum = (array) => {
+  return array.reduce((a, b) => a + b);
 };
 
-export {rankScore};
+export {rankSum, getRankArray};
