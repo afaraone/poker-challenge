@@ -1,9 +1,9 @@
-import {rankScore} from './score';
+import {rankSum} from './score';
 
 class Player {
   constructor(cards) {
     this.hand = cards;
-    this.score = rankScore(cards);
+    this.score = rankSum(cards);
   };
 };
 
