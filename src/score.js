@@ -17,4 +17,15 @@ const isStraight = (array) => {
   return true
 }
 
-export {rankSum, getRankArray, isStraight};
+const countPairsTriples = (array) => {
+  array.sort();
+  let count = 0;
+  for (let i = 0; i < array.length -1; i++) {
+    if (array[i] === array[i + 1]) {
+      count += 10;
+    };
+  };
+  return count
+};
+
+export {rankSum, getRankArray, isStraight, countPairsTriples};
