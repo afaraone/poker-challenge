@@ -1,12 +1,12 @@
 class Player {
   constructor(cards) {
     this.hand = cards;
-    this.score = 0;
+    this.score = this.calculateScore(cards);
   };
 
-  calculateScore() {
+  calculateScore(hand) {
     let total = 0
-    this.hand.forEach(card => {
+    hand.forEach(card => {
       total += card.rank;
     });
     return total;
