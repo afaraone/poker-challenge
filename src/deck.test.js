@@ -1,4 +1,4 @@
-import {deck, shuffle, deal} from './deck';
+import {deck, shuffle, deal, sortHand} from './deck';
 
 describe("deck", () =>{
   let cards = deck();
@@ -35,5 +35,13 @@ describe('deal', () => {
 
   it('each array has length of numCards', () => {
     expect(dealtCards[0]).toHaveLength(5);
+  });
+});
+
+describe('sortHand', () => {
+  it('sorts array by suit property then rank property', () => {
+    let cards = [{suit: 1, rank: 4}, {suit: 1, rank: 2}, {suit: 0, rank: 8}]
+    let sortedCards = [{suit: 0, rank: 8}, {suit: 1, rank: 2}, {suit: 1, rank: 4}]
+    expect(sortHand(cards)).toEqual(sortedCards);
   });
 });

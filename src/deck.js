@@ -1,5 +1,4 @@
-// Returns an array of card objects
-
+// Returns a shuffled array of card objects
 const deck = () => {
   let cards = [];
   for (let suit = 0; suit < 4; suit++) {
@@ -10,7 +9,6 @@ const deck = () => {
   return shuffle(cards);
 };
 
-
 // returns an randomly sorted array
 const shuffle = array => {
   return array.slice().sort(() => {
@@ -18,19 +16,34 @@ const shuffle = array => {
   });
 };
 
-// returns numPlayers * arrays of numCards * cards 
+// returns hand sorted by suit then rank val (used for player hands)
+const sortHand = (hand) => {
+  return hand.sort((a, b)  => {
+    return a.suit - b.suit || a.rank - b.rank
+  })
+}
+
+// returns dealtCards with each hand sorted
+const sortCards = (dealtCards) => {
+  dealtCards.forEach(hand => {
+    sortHand(hand);
+  });
+  return dealtCards;
+};
+
+// returns numPlayers * hands of  numCards * cards
 const deal = (numPlayers, numCards) => {
   let dealtCards = [];
   let cards = deck();
-
   let endPoint = 0;
   for (let i = 0; i < numPlayers; i++) {
     let startPoint = endPoint;
     endPoint = startPoint + numCards;
-    dealtCards.push(cards.slice(startPoint, endPoint))
+    let hand = cards.slice(startPoint, endPoint)
+    dealtCards.push(hand)
     startPoint = endPoint;
   };
-  return dealtCards;
+  return sortCards(dealtCards);
 };
 
-export {deck, deal, shuffle}
+export {deck, deal, shuffle, sortHand}
