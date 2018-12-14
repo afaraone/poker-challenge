@@ -33,7 +33,7 @@ class GameForm extends Component {
         <input id="num-cards-text"
         type="text" onChange={e => this.setNumCards(e.target.value)}></input>
 
-        <button id="play-btn" onClick={this.props.play(numPlayers, numCards)}>
+        <button id="play-btn" onClick={() => this.props.play(numPlayers, numCards)}>
           Play
         </button>
       </div>
