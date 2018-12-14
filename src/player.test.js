@@ -3,7 +3,7 @@ import {mockHand} from './mocks'
 import * as score from './score'
 
 // spy on score method
-jest.spyOn(score, 'rankSum').mockImplementation(() => 10)
+jest.spyOn(score, 'getScore').mockImplementation(() => 10)
 
 describe('Player', () => {
   let player;
@@ -15,8 +15,8 @@ describe('Player', () => {
     expect(player.hand).toEqual(mockHand);
   });
 
-  it('calls score and sets to score variable', () => {
-    expect(score.rankSum).toHaveBeenCalled();
+  it('calls getScore and sets to score variable', () => {
+    expect(score.getScore).toHaveBeenCalled();
     expect(player.score).toEqual(10);
   });
 });
