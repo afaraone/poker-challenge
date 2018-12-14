@@ -1,4 +1,4 @@
-import {deck, shuffle, deal, sortHand} from './deck';
+import {deck, shuffle, deal, sortHand, sortDealtCards} from './deck';
 
 describe("deck", () =>{
   let cards = deck();
@@ -43,5 +43,15 @@ describe('sortHand', () => {
     let cards = [{suit: 1, rank: 4}, {suit: 1, rank: 2}, {suit: 0, rank: 8}]
     let sortedCards = [{suit: 0, rank: 8}, {suit: 1, rank: 2}, {suit: 1, rank: 4}]
     expect(sortHand(cards)).toEqual(sortedCards);
+  });
+});
+
+describe('sortDealtCards', () => {
+  it('it calls sortHand on each array of cards', () => {
+    let cards = [{suit: 1, rank: 4}, {suit: 1, rank: 2}, {suit: 0, rank: 8}]
+    let sortedCards = [{suit: 0, rank: 8}, {suit: 1, rank: 2}, {suit: 1, rank: 4}]
+    let unSortedArray = [cards, cards, cards]
+    let sortedArray = [sortedCards, sortedCards, sortedCards]
+    expect(sortDealtCards(unSortedArray)).toEqual(sortedArray)
   });
 });

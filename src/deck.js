@@ -24,7 +24,7 @@ const sortHand = (hand) => {
 }
 
 // returns dealtCards with each hand sorted
-const sortCards = (dealtCards) => {
+const sortDealtCards = (dealtCards) => {
   dealtCards.forEach(hand => {
     sortHand(hand);
   });
@@ -43,7 +43,7 @@ const deal = (numPlayers, numCards) => {
     dealtCards.push(hand)
     startPoint = endPoint;
   };
-  return sortCards(dealtCards);
+  return sortDealtCards(dealtCards);
 };
 
-export {deck, deal, shuffle, sortHand}
+export {deck, deal, shuffle, sortHand, sortDealtCards}
