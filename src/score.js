@@ -14,7 +14,7 @@ const getRankArray = (hand) => {
   hand.forEach(card => {
     ranks.push(card.rank);
   });
-  return ranks
+  return ranks.sort()
 }
 
 const addSum = (array) => {
@@ -22,7 +22,6 @@ const addSum = (array) => {
 };
 
 const addPairsTriples = (array) => {
-  array.sort();
   let count = 0;
   for (let i = 0; i < array.length -1; i++) {
     if (array[i] === array[i + 1]) {
@@ -37,9 +36,8 @@ const addStraight = (array) => {
 }
 
 const isStraight = (array) => {
-  array.sort();
   for (let i = 0; i < array.length -1; i++) {
-    if (array[i] +1 !== array[i + 1]) return false
+    if (array[i] + 1 !== array[i + 1]) return false
   }
   return true
 }

@@ -22,8 +22,10 @@ describe('getScore', () => {
 // tests for private methods
 
 describe('getRankArray', () => {
-  it('returns an array of rank integers', () => {
-    expect(getRankArray(mockHand)).toEqual([1,2,3,4])
+  let hand = [{rank: 4, suit: 2}, {rank: 2, suit: 1}, {rank: 5, suit: 2}]
+
+  it('returns an array of rank integers sorted by size', () => {
+    expect(getRankArray(hand)).toEqual([2,4,5])
   });
 });
 
