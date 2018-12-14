@@ -31,7 +31,9 @@ const sortDealtCards = (dealtCards) => {
   return dealtCards;
 };
 
-// returns numPlayers * hands of  numCards * cards
+// returns numPlayers * hands of  numCards * card objects
+// each hand is sortedArray
+
 const deal = (numPlayers, numCards) => {
   let dealtCards = [];
   let cards = deck();
