@@ -19,6 +19,13 @@ describe('Game - unit test', () => {
     expect(wrapper.containsMatchingElement(<GameForm/>)).toEqual(true)
   });
 
+  describe('rendering player components', () => {
+    it('renders player objects', () => {
+      wrapper.instance().play(3, 4);
+      expect(wrapper.find(Player)).toHaveLength(3);
+    });
+  });
+
   describe('#play', () => {
     it('calls deal with arguments and saves player objects to state', () => {
       wrapper.instance().play(3, 4);
@@ -27,16 +34,15 @@ describe('Game - unit test', () => {
     });
   });
 
-  describe('createPlayerObject', () => {
+  describe('#createPlayerObject', () => {
     it('creates a player object from a hand array', () => {
       expect(wrapper.instance().createPlayerObject(mockHand)).toEqual(mockPlayerObject);
     });
   });
 
-  describe('rendering player components', () => {
-    it('renders player objects', () => {
-      wrapper.instance().play(3, 4);
-      expect(wrapper.find(Player)).toHaveLength(3);
+  describe('#getWinnerIndex', () => {
+    it('it returns index of player obj with highest score', () => {
+      expect(wrapper.instance().getWinnerIndex(mockPlayerObjectList)).toEqual(1);
     });
   });
 });

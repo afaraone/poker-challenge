@@ -20,6 +20,18 @@ class Game extends Component {
     this.setState({players: players})
   };
 
+  getWinnerIndex(players) {
+    let winnerScore = 0;
+    let winnerIndex;
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].score >winnerScore) {
+        winnerIndex = i;
+        winnerScore = players[i].score;
+      };
+    };
+    return winnerIndex;
+  }
+
   createPlayerObject(hand) {
     return {hand: hand, score: getScore(hand)}
   }
