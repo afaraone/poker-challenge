@@ -12,6 +12,10 @@ let mockPlayerObjectList =  [{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {ra
 {hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58},
 {hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50}]
 
+let mockPlayerObjectListWithWinner = [{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false},
+{hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58, winner: true},
+{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false}]
+
 let mockPlayerObject = {hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50}
 
-export {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList};
+export {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList, mockPlayerObjectListWithWinner};

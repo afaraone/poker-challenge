@@ -5,7 +5,7 @@ import Game from './game';
 import GameForm from './gameForm';
 import Player from './player'
 import * as deck from '../deck'
-import {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList} from '../mocks'
+import {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList, mockPlayerObjectListWithWinner} from '../mocks'
 
 // mock deal
 jest.spyOn(deck, 'deal').mockImplementation(() => mockDealtCards);
@@ -30,7 +30,7 @@ describe('Game - unit test', () => {
     it('calls deal with arguments and saves player objects to state', () => {
       wrapper.instance().play(3, 4);
       expect(deck.deal).toHaveBeenCalledWith(3, 4);
-      expect(wrapper.state('players')).toEqual(mockPlayerObjectList);
+      expect(wrapper.state('players')).toEqual(mockPlayerObjectListWithWinner);
     });
   });
 

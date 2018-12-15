@@ -17,6 +17,7 @@ class Game extends Component {
     deal(numPlayers, numCards).forEach(hand => {
       players.push(this.createPlayerObject(hand));
     });
+    this.setWinnerState(players);
     this.setState({players: players})
   };
 
