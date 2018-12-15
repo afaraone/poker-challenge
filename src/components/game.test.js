@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Game from './game';
 import GameForm from './gameForm';
+import Player from './player'
 import * as deck from '../deck'
 import {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList} from '../mocks'
 
@@ -29,6 +30,13 @@ describe('Game - unit test', () => {
   describe('createPlayerObject', () => {
     it('creates a player object from a hand array', () => {
       expect(wrapper.instance().createPlayerObject(mockHand)).toEqual(mockPlayerObject);
+    });
+  });
+
+  describe('rendering player components', () => {
+    it('renders player objects', () => {
+      wrapper.instance().play(3, 4);
+      expect(wrapper.find(Player)).toHaveLength(3);
     });
   });
 });
