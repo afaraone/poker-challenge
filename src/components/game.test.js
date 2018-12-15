@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import Game from './game';
 import GameForm from './gameForm';
 import * as deck from '../deck'
-import {mockDealtCards} from '../mocks'
+import {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList} from '../mocks'
 
 // mock deal
 jest.spyOn(deck, 'deal').mockImplementation(() => mockDealtCards);
@@ -19,10 +19,16 @@ describe('Game - unit test', () => {
   });
 
   describe('#play', () => {
-    it('calls deal with arguments and saves to players', () => {
+    it('calls deal with arguments and saves player objects to state', () => {
       wrapper.instance().play(3, 4);
       expect(deck.deal).toHaveBeenCalledWith(3, 4);
-      expect(wrapper.state('players')).toEqual(mockDealtCards);
+      expect(wrapper.state('players')).toEqual(mockPlayerObjectList);
+    });
+  });
+
+  describe('createPlayerObject', () => {
+    it('creates a player object from a hand array', () => {
+      expect(wrapper.instance().createPlayerObject(mockHand)).toEqual(mockPlayerObject);
     });
   });
 });
