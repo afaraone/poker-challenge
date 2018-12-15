@@ -45,4 +45,19 @@ describe('Game - unit test', () => {
       expect(wrapper.instance().getWinnerIndex(mockPlayerObjectList)).toEqual(1);
     });
   });
+
+  describe('#setWinnerState - for a list of player objects', () => {
+    beforeEach(() => {
+      wrapper.instance().setWinnerState(mockPlayerObjectList);
+    });
+
+    it('it sets winner to true if has highest score', () => {
+      expect(mockPlayerObjectList[1].winner).toEqual(true);
+    });
+
+    it('it sets winner to false for others', () => {
+      expect(mockPlayerObjectList[0].winner).toEqual(false);
+      expect(mockPlayerObjectList[2].winner).toEqual(false);
+    });
+  })
 });
