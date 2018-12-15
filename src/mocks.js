@@ -8,14 +8,16 @@ let mockHandHigherScore = [
 
 let mockDealtCards = [mockHand, mockHandHigherScore, mockHand]
 
-let mockPlayerObjectList =  [{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50},
-{hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58},
-{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50}]
+let mockPlayerObject = {hand: mockHand, score: 50}
+let mockPlayerObjectHigherScore = {hand: mockHandHigherScore, score: 58}
 
-let mockPlayerObjectListWithWinner = [{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false},
-{hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58, winner: true},
-{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false}]
+let mockPlayerObjectList =  [mockPlayerObject, mockPlayerObjectHigherScore, mockPlayerObject]
 
-let mockPlayerObject = {hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50}
+let mockPlayerObjectWithWinner = {hand: mockHand, score: 50, winner: false}
+let mockPlayerObjectHigherScoreWithWinner = {hand: mockHandHigherScore, score: 58, winner: true}
+
+
+let mockPlayerObjectListWithWinner = [mockPlayerObjectWithWinner,
+  mockPlayerObjectHigherScoreWithWinner, mockPlayerObjectWithWinner]
 
 export {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList, mockPlayerObjectListWithWinner};
