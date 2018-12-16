@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import GameForm from './gameForm';
 import Player from './player';
-import {deal} from '../deck';
-import {getScore} from '../score';
+import deal from '../deck';
+import getScore from '../score';
+import createPlayerObjects from '../createPlayerObjects';
 
 
 // gets an array of hands from deal function and creates Player objects
@@ -15,50 +16,17 @@ class Game extends Component {
     };
   };
 
-  // calls deal method, sets to state
+  // calls deal method, sets player objects to state
   play(numPlayers, numCards) {
     // set error to true if impossible combination
     if (numPlayers * numCards > 52 || numPlayers * numCards === 0) {
-      this.setState({players: null, error: true})
+      this.setState({players: null, error: true});
     } else {
-      let players = [];
-      deal(numPlayers, numCards).forEach(hand => {
-        players.push(this.createPlayerObject(hand));
-      });
-      this.setWinnerState(players);
-      this.setState({players: players, error: false})
-    }
-  };
-
-  // returns a player object
-  createPlayerObject(hand) {
-    return {hand: hand, score: getScore(hand)}
-  }
-
-  // sets val for winner key for each player object
-  setWinnerState(players) {
-    let winnerIndex = this.getWinnerIndex(players);
-    for (let i = 0; i < players.length; i++) {
-      if (i === winnerIndex) {
-        players[i].winner = true
-      } else {
-        players[i].winner = false
-      }
-    }
-  };
-
-  // return index of array for element with highest score value
-  getWinnerIndex(players) {
-    let winnerScore = 0;
-    let winnerIndex;
-    for (let i = 0; i < players.length; i++) {
-      if (players[i].score >winnerScore) {
-        winnerIndex = i;
-        winnerScore = players[i].score;
-      };
+      let dealtCards = deal(numPlayers, numCards);
+      let players = createPlayerObjects(dealtCards);
+      this.setState({players: players, error: false});
     };
-    return winnerIndex;
-  }
+  };
 
   // maps array of player objects to Player React component
   renderPlayers() {

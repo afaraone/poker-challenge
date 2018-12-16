@@ -7,7 +7,7 @@ function Player(props) {
 
   return(
     <div>
-      <h1 id="score">{score}</h1>
+      <h1 id="score">Score: {score}</h1>
       {renderHand(hand)}
       {winner && <h1>Winner!</h1>}
     </div>

@@ -4,16 +4,13 @@ import { shallow } from 'enzyme';
 import Game from './game';
 import GameForm from './gameForm';
 import Player from './player'
-import * as deck from '../deck'
-import {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList, mockPlayerObjectListWithWinner} from '../mocks'
 
-// mock deal
-jest.spyOn(deck, 'deal').mockImplementation(() => mockDealtCards);
-
-describe('Game - unit test', () => {
+describe('Game', () => {
   let wrapper;
-  beforeEach(() => wrapper = shallow(<Game />));
 
+  beforeEach(() => {
+    wrapper = shallow(<Game />)
+  });
 
   it('renders gameForm component', () => {
     expect(wrapper.containsMatchingElement(<GameForm/>)).toEqual(true)
@@ -27,12 +24,6 @@ describe('Game - unit test', () => {
   });
 
   describe('#play', () => {
-    it('calls deal with arguments and saves player objects to state', () => {
-      wrapper.instance().play(3, 4);
-      expect(deck.deal).toHaveBeenCalledWith(3, 4);
-      expect(wrapper.state('players')).toEqual(mockPlayerObjectListWithWinner);
-    });
-
     it('renders error message if product of arguments greater than 52', () => {
       wrapper.instance().play(30, 5);
       expect(wrapper.text()).toContain('Not possible!');
@@ -43,31 +34,4 @@ describe('Game - unit test', () => {
       expect(wrapper.text()).toContain('Not possible!');
     });
   });
-
-  describe('#createPlayerObject', () => {
-    it('creates a player object from a hand array', () => {
-      expect(wrapper.instance().createPlayerObject(mockHand)).toEqual(mockPlayerObject);
-    });
-  });
-
-  describe('#getWinnerIndex', () => {
-    it('it returns index of player obj with highest score', () => {
-      expect(wrapper.instance().getWinnerIndex(mockPlayerObjectList)).toEqual(1);
-    });
-  });
-
-  describe('#setWinnerState - for a list of player objects', () => {
-    beforeEach(() => {
-      wrapper.instance().setWinnerState(mockPlayerObjectList);
-    });
-
-    it('it sets winner to true if has highest score', () => {
-      expect(mockPlayerObjectList[1].winner).toEqual(true);
-    });
-
-    it('it sets winner to false for others', () => {
-      expect(mockPlayerObjectList[0].winner).toEqual(false);
-      expect(mockPlayerObjectList[2].winner).toEqual(false);
-    });
-  })
 });

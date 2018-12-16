@@ -1,5 +1,4 @@
 import getScore from './score'
-import {mockHand} from './mocks'
 
 describe('getScore', () => {
   let normalHand = [{rank: 2, suit: 1}, {rank: 4, suit: 2}, {rank: 5, suit: 2}]
