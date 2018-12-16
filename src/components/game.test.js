@@ -32,6 +32,16 @@ describe('Game - unit test', () => {
       expect(deck.deal).toHaveBeenCalledWith(3, 4);
       expect(wrapper.state('players')).toEqual(mockPlayerObjectListWithWinner);
     });
+
+    it('renders error message if product of arguments greater than 52', () => {
+      wrapper.instance().play(30, 5);
+      expect(wrapper.text()).toContain('Not possible!');
+    });
+
+    it('renders error message if product of arguments is 0', () => {
+      wrapper.instance().play(0, 5);
+      expect(wrapper.text()).toContain('Not possible!');
+    });
   });
 
   describe('#createPlayerObject', () => {

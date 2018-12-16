@@ -8,17 +8,22 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: null
+      players: null,
+      error: false
     };
   };
 
   play(numPlayers, numCards) {
-    let players = [];
-    deal(numPlayers, numCards).forEach(hand => {
-      players.push(this.createPlayerObject(hand));
-    });
-    this.setWinnerState(players);
-    this.setState({players: players})
+    if (numPlayers * numCards > 52 || numPlayers * numCards === 0) {
+      this.setState({players: null, error: true})
+    } else {
+      let players = [];
+      deal(numPlayers, numCards).forEach(hand => {
+        players.push(this.createPlayerObject(hand));
+      });
+      this.setWinnerState(players);
+      this.setState({players: players, error: false})
+    }
   };
 
   getWinnerIndex(players) {
@@ -57,9 +62,11 @@ class Game extends Component {
 
   render() {
     let playersAreLoaded = this.state.players !== null
+    let showError = this.state.error
     return (
       <>
         <GameForm play={(numPlayers, numCards) => this.play(numPlayers, numCards)}/>
+        {showError && <h2>Not possible!</h2>}
         {playersAreLoaded && this.renderPlayers()}
       </>
     )
