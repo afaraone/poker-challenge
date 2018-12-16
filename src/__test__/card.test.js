@@ -10,6 +10,6 @@ describe('Card', () => {
   });
 
   it('renders formatted string', () => {
-    expect(wrapper.contains(<h2>10♥️</h2>)).toEqual(true);
+    expect(wrapper.contains(<h2 className="card">10♥️</h2>)).toEqual(true);
   });
 });
