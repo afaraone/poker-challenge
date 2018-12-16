@@ -1,30 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from './card';
 
-class Player extends Component {
-  constructor(props) {
-    super(props);
-  };
+function Player(props) {
+  let {score, winner, hand} = props
 
-  renderHand() {
-    let hand = this.props.hand.map((card, index) => {
-      return(<Card {...card} key={index} />)
-    });
-    return hand;
-  };
-
-  render() {
-    let score = this.props.score
-    let isWinner = this.props.winner
-
-    return(
-      <div>
-        <h1 id="score">{score}</h1>
-        {this.renderHand()}
-        {isWinner && <h1>Winner!</h1>}
-      </div>
-    )
-  }
+  return(
+    <div>
+      <h1 id="score">{score}</h1>
+      {renderHand(hand)}
+      {winner && <h1>Winner!</h1>}
+    </div>
+  )
 }
+
+function renderHand(hand) {
+  let cardComponents = hand.map((card, index) => {
+    return(<Card {...card} key={index} />)
+  });
+  return cardComponents;
+};
+
 
 export default Player;
