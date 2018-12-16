@@ -1,57 +1,23 @@
-import {deck, shuffle, deal, sortHand, sortDealtCards} from './deck';
-
-describe("deck", () =>{
-  let cards = deck();
-
-  it('returns 52 cards objects', () => {
-    expect(cards).toHaveLength(52);
-  });
-
-  it('card object contains rank and suit keys', () => {
-    expect(cards[0]).toHaveProperty('suit');
-    expect(cards[0]).toHaveProperty('rank');
-  });
-
-  it('all cards are unique', () => {
-    // create a copy of cards that only has unique elements
-    let uniqueCards = Array.from(new Set(cards));
-    expect(cards).toEqual(uniqueCards);
-  });
-});
-
-describe('shuffle', () => {
-  it('returns randomly sorted copy of array', () => {
-    let array = [1, 2, 3, 4];
-    expect(shuffle(array)).not.toEqual(array);
-  });
-});
+import deal from './deck';
+import seedrandom from 'seedrandom';
 
 describe('deal', () => {
-  let dealtCards = deal(4, 5);
+    let dealtCards = deal(4, 5);
 
-  it('returns an array equal to length of numPlayers', () => {
-    expect(dealtCards).toHaveLength(4);
-  });
+    it('returns an array equal to length of numPlayers', () => {
+        expect(dealtCards).toHaveLength(4);
+    });
 
-  it('each array has length of numCards', () => {
-    expect(dealtCards[0]).toHaveLength(5);
-  });
-});
+    it('each array has length of numCards', () => {
+        expect(dealtCards[0]).toHaveLength(5);
+    });
 
-describe('sortHand', () => {
-  it('sorts array by suit property then rank property', () => {
-    let cards = [{suit: 1, rank: 4}, {suit: 1, rank: 2}, {suit: 0, rank: 8}]
-    let sortedCards = [{suit: 0, rank: 8}, {suit: 1, rank: 2}, {suit: 1, rank: 4}]
-    expect(sortHand(cards)).toEqual(sortedCards);
-  });
-});
-
-describe('sortDealtCards', () => {
-  it('it calls sortHand on each array of cards', () => {
-    let cards = [{suit: 1, rank: 4}, {suit: 1, rank: 2}, {suit: 0, rank: 8}]
-    let sortedCards = [{suit: 0, rank: 8}, {suit: 1, rank: 2}, {suit: 1, rank: 4}]
-    let unSortedArray = [cards, cards, cards]
-    let sortedArray = [sortedCards, sortedCards, sortedCards]
-    expect(sortDealtCards(unSortedArray)).toEqual(sortedArray)
-  });
+    it('each array holds objects with rank and suit properties', () => {
+      dealtCards.forEach(hand => {
+        hand.forEach(card => {
+          expect(card).toHaveProperty('suit');
+          expect(card).toHaveProperty('rank');
+        });
+      });
+    });
 });

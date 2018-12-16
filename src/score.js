@@ -8,6 +8,7 @@ const getScore = (hand) => {
   return total;
 };
 
+// private methods
 // converts array of cards object into sorted array of rank integers
 const getRankArray = (hand) => {
   let ranks = []
@@ -47,4 +48,4 @@ const isStraight = (array) => {
   return true
 }
 
-export {addSum, getRankArray, isStraight, addStraight, addPairsTriples, getScore};
+export default getScore;

@@ -4,13 +4,18 @@ import { shallow } from 'enzyme';
 
 import Player from './player';
 import Card from './card';
-import {mockPlayerObjectWithWinner, mockPlayerObjectHigherScoreWithWinner} from '../mocks';
+
+let playerNotWinner = {hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2},
+  {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false}
+
+let playerWinner = {hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2},
+  {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58, winner: true}
 
 describe('Player', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Player {...mockPlayerObjectWithWinner} />)
+    wrapper = shallow(<Player {...playerNotWinner} />)
   });
 
   it('renders score', () => {
@@ -22,7 +27,7 @@ describe('Player', () => {
   });
 
   it('renders winner message if winner', () => {
-    wrapper = shallow(<Player {...mockPlayerObjectHigherScoreWithWinner} />)
+    wrapper = shallow(<Player {...playerWinner} />)
     expect(wrapper.text()).toContain("Winner!");
   });
 });

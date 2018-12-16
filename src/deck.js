@@ -1,3 +1,20 @@
+// returns numPlayers * hands of  numCards * card objects
+// each hand is a sorted array
+const deal = (numPlayers, numCards) => {
+  let dealtCards = [];
+  let cards = deck();
+  // iterator makes a slice from the deck
+  let endPoint = 0;
+  for (let i = 0; i < numPlayers; i++) {
+    let startPoint = endPoint;
+    endPoint = startPoint + numCards;
+    let hand = cards.slice(startPoint, endPoint)
+    dealtCards.push(hand)
+    startPoint = endPoint;
+  };
+  return sortDealtCards(dealtCards);
+};
+
 // Returns a shuffled array of card objects
 const deck = () => {
   let cards = [];
@@ -31,21 +48,5 @@ const sortDealtCards = (dealtCards) => {
   return dealtCards;
 };
 
-// returns numPlayers * hands of  numCards * card objects
-// each hand is a sorted array
-const deal = (numPlayers, numCards) => {
-  let dealtCards = [];
-  let cards = deck();
-  // iterator makes a slice from the deck
-  let endPoint = 0;
-  for (let i = 0; i < numPlayers; i++) {
-    let startPoint = endPoint;
-    endPoint = startPoint + numCards;
-    let hand = cards.slice(startPoint, endPoint)
-    dealtCards.push(hand)
-    startPoint = endPoint;
-  };
-  return sortDealtCards(dealtCards);
-};
 
-export {deck, deal, shuffle, sortHand, sortDealtCards}
+export default deal
