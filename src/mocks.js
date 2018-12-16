@@ -20,4 +20,4 @@ let mockPlayerObjectHigherScoreWithWinner = {hand: mockHandHigherScore, score: 5
 let mockPlayerObjectListWithWinner = [mockPlayerObjectWithWinner,
   mockPlayerObjectHigherScoreWithWinner, mockPlayerObjectWithWinner]
 
-export {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectList, mockPlayerObjectListWithWinner};
+export {mockDealtCards, mockHand, mockPlayerObject, mockPlayerObjectWithWinner, mockPlayerObjectHigherScoreWithWinner, mockPlayerObjectList, mockPlayerObjectListWithWinner};
