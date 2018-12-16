@@ -4,6 +4,8 @@ import Player from './player';
 import {deal} from '../deck';
 import {getScore} from '../score';
 
+
+// gets an array of hands from deal function and creates Player objects
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -28,17 +30,9 @@ class Game extends Component {
     }
   };
 
-  // return index of array for element with highest score value
-  getWinnerIndex(players) {
-    let winnerScore = 0;
-    let winnerIndex;
-    for (let i = 0; i < players.length; i++) {
-      if (players[i].score >winnerScore) {
-        winnerIndex = i;
-        winnerScore = players[i].score;
-      };
-    };
-    return winnerIndex;
+  // returns a player object
+  createPlayerObject(hand) {
+    return {hand: hand, score: getScore(hand)}
   }
 
   // sets val for winner key for each player object
@@ -53,9 +47,17 @@ class Game extends Component {
     }
   };
 
-  // returns a player object
-  createPlayerObject(hand) {
-    return {hand: hand, score: getScore(hand)}
+  // return index of array for element with highest score value
+  getWinnerIndex(players) {
+    let winnerScore = 0;
+    let winnerIndex;
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].score >winnerScore) {
+        winnerIndex = i;
+        winnerScore = players[i].score;
+      };
+    };
+    return winnerIndex;
   }
 
   // maps array of player objects to Player React component

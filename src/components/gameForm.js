@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// renders form with callback to parent component
 class GameForm extends Component {
   constructor(props) {
     super(props);

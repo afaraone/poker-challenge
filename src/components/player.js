@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './card';
 
+// renders a player consisting of a score, winner message and Card components
 function Player(props) {
   let {score, winner, hand} = props
 
@@ -13,6 +14,7 @@ function Player(props) {
   )
 }
 
+// maps hand to array of Card React components
 function renderHand(hand) {
   let cardComponents = hand.map((card, index) => {
     return(<Card {...card} key={index} />)
