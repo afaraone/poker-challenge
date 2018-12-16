@@ -11,12 +11,12 @@ const getScore = (hand) => {
 // private methods
 // converts array of cards object into sorted array of rank integers
 const getRankArray = (hand) => {
-  let ranks = []
+  let ranks = [];
   hand.forEach(card => {
     ranks.push(card.rank);
   });
-  return ranks.sort()
-}
+  return ranks.sort();
+};
 
 // returns total
 const addSum = (array) => {
@@ -31,21 +31,21 @@ const addPairsTriples = (array) => {
       count += 10;
     };
   };
-  return count
+  return count;
 };
 
 // returns 40 if array is a straight
 const addStraight = (array) => {
-  return isStraight(array) ? 40 : 0
-}
+  return isStraight(array) ? 40 : 0;
+};
 
 // returns bool if array is a straight
 const isStraight = (array) => {
   //iterate through array, unless element + 1 is equal to neighbour return false
   for (let i = 0; i < array.length -1; i++) {
-    if (array[i] + 1 !== array[i + 1]) return false
-  }
-  return true
-}
+    if (array[i] + 1 !== array[i + 1]) return false;
+  };
+  return true;
+};
 
 export default getScore;

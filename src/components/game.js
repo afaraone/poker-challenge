@@ -31,21 +31,21 @@ class Game extends Component {
   // maps array of player objects to Player React component
   renderPlayers() {
     let players = this.state.players.map((playerObject, index) => {
-      return(<Player {...playerObject} key={index} />)
+      return(<Player {...playerObject} key={index} />);
     });
-    return players
+    return players;
   }
 
   render() {
-    let playersAreLoaded = this.state.players !== null
-    let showError = this.state.error
+    let playersAreLoaded = this.state.players !== null;
+    let showError = this.state.error;
     return (
       <>
         <GameForm play={(numPlayers, numCards) => this.play(numPlayers, numCards)}/>
         {showError && <h2>Not possible!</h2>}
         {playersAreLoaded && this.renderPlayers()}
       </>
-    )
+    );
   };
 };
 

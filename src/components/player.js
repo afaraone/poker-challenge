@@ -11,8 +11,8 @@ function Player(props) {
       {renderHand(hand)}
       {winner && <h1>Winner!</h1>}
     </div>
-  )
-}
+  );
+};
 
 // maps hand to array of Card React components
 function renderHand(hand) {

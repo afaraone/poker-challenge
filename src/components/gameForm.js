@@ -7,8 +7,8 @@ class GameForm extends Component {
     this.state = {
       numPlayers: null,
       numCards: null
-    }
-  }
+    };
+  };
 
   // set numPlayers state to integer
   setNumPlayers(numString) {
@@ -40,8 +40,8 @@ class GameForm extends Component {
           Play
         </button>
       </div>
-    )
-  }
+    );
+  };
 };
 
 export default GameForm;

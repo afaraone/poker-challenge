@@ -8,8 +8,8 @@ const deal = (numPlayers, numCards) => {
   for (let i = 0; i < numPlayers; i++) {
     let startPoint = endPoint;
     endPoint = startPoint + numCards;
-    let hand = cards.slice(startPoint, endPoint)
-    dealtCards.push(hand)
+    let hand = cards.slice(startPoint, endPoint);
+    dealtCards.push(hand);
     startPoint = endPoint;
   };
   return sortDealtCards(dealtCards);
@@ -36,9 +36,9 @@ const shuffle = array => {
 // returns hand sorted by suit then rank val (used for player hands)
 const sortHand = (hand) => {
   return hand.sort((a, b)  => {
-    return a.suit - b.suit || a.rank - b.rank
-  })
-}
+    return a.suit - b.suit || a.rank - b.rank;
+  });
+};
 
 // returns dealtCards with each hand sorted
 const sortDealtCards = (dealtCards) => {
@@ -49,4 +49,4 @@ const sortDealtCards = (dealtCards) => {
 };
 
 
-export default deal
+export default deal;

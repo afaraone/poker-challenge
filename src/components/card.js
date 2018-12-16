@@ -10,12 +10,12 @@ function Card(props) {
         <h2>{rank}{suit}</h2>
       </>
     );
-}
+};
 
 // converts suit number into emoji
 function formatSuit(suit) {
   let suitKey = {0: "♣️", 1: "♦️", 2: "♠️", 3: "♥️"};
   return suitKey[suit];
-}
+};
 
 export default Card;
