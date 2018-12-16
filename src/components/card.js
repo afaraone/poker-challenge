@@ -7,7 +7,7 @@ function Card(props) {
 
     return(
       <>
-        <h2>{rank}{suit}</h2>
+        <h2 className="card">{rank}{suit}</h2>
       </>
     );
 };

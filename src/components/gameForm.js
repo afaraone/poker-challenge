@@ -31,10 +31,10 @@ class GameForm extends Component {
     return(
       <div>
         <input id="num-players-text"
-        type="text" onChange={e => this.setNumPlayers(e.target.value)}></input>
+        type="text" placeholder="Number of Players" onChange={e => this.setNumPlayers(e.target.value)} />
 
         <input id="num-cards-text"
-        type="text" onChange={e => this.setNumCards(e.target.value)}></input>
+        type="text" placeholder="Number of Cards" onChange={e => this.setNumCards(e.target.value)} />
 
         <button id="play-btn" onClick={() => this.props.play(numPlayers, numCards)}>
           Play

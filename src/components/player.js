@@ -6,9 +6,11 @@ function Player(props) {
   let {score, winner, hand} = props
 
   return(
-    <div>
+    <div className="player">
       <h1 id="score">Score: {score}</h1>
+      <br />
       {renderHand(hand)}
+      <br />
       {winner && <h1>Winner!</h1>}
     </div>
   );

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../stylesheets/game.css';
+
 import GameForm from './gameForm';
 import Player from './player';
 import deal from '../deck';
