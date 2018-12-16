@@ -32,11 +32,11 @@ const sortDealtCards = (dealtCards) => {
 };
 
 // returns numPlayers * hands of  numCards * card objects
-// each hand is sortedArray
-
+// each hand is a sorted array
 const deal = (numPlayers, numCards) => {
   let dealtCards = [];
   let cards = deck();
+  // iterator makes a slice from the deck
   let endPoint = 0;
   for (let i = 0; i < numPlayers; i++) {
     let startPoint = endPoint;

@@ -9,12 +9,14 @@ class GameForm extends Component {
     }
   }
 
+  // set numPlayers state to integer
   setNumPlayers(numString) {
     this.setState({
       numPlayers: parseInt(numString)
     });
   };
 
+  // set numCards state to integer
   setNumCards(numString) {
     this.setState({
       numCards: parseInt(numString)

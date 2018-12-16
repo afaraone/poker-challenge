@@ -13,7 +13,9 @@ class Game extends Component {
     };
   };
 
+  // calls deal method, sets to state
   play(numPlayers, numCards) {
+    // set error to true if impossible combination
     if (numPlayers * numCards > 52 || numPlayers * numCards === 0) {
       this.setState({players: null, error: true})
     } else {
@@ -26,6 +28,7 @@ class Game extends Component {
     }
   };
 
+  // return index of array for element with highest score value
   getWinnerIndex(players) {
     let winnerScore = 0;
     let winnerIndex;
@@ -38,6 +41,7 @@ class Game extends Component {
     return winnerIndex;
   }
 
+  // sets val for winner key for each player object
   setWinnerState(players) {
     let winnerIndex = this.getWinnerIndex(players);
     for (let i = 0; i < players.length; i++) {
@@ -49,10 +53,12 @@ class Game extends Component {
     }
   };
 
+  // returns a player object
   createPlayerObject(hand) {
     return {hand: hand, score: getScore(hand)}
   }
 
+  // maps array of player objects to Player React component
   renderPlayers() {
     let players = this.state.players.map((playerObject, index) => {
       return(<Player {...playerObject} key={index} />)

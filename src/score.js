@@ -8,7 +8,7 @@ const getScore = (hand) => {
   return total;
 };
 
-// converts array of cards object into array of rank integers
+// converts array of cards object into sorted array of rank integers
 const getRankArray = (hand) => {
   let ranks = []
   hand.forEach(card => {
@@ -17,10 +17,12 @@ const getRankArray = (hand) => {
   return ranks.sort()
 }
 
+// returns total
 const addSum = (array) => {
   return array.reduce((a, b) => a + b);
 };
 
+// adds 10 for every pair and 20 for triples
 const addPairsTriples = (array) => {
   let count = 0;
   for (let i = 0; i < array.length -1; i++) {
@@ -31,11 +33,14 @@ const addPairsTriples = (array) => {
   return count
 };
 
+// returns 40 if array is a straight
 const addStraight = (array) => {
   return isStraight(array) ? 40 : 0
 }
 
+// returns bool if array is a straight
 const isStraight = (array) => {
+  //iterate through array, unless element + 1 is equal to neighbour return false
   for (let i = 0; i < array.length -1; i++) {
     if (array[i] + 1 !== array[i + 1]) return false
   }
