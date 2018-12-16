@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import Game from './game';
-import GameForm from './gameForm';
-import Player from './player'
+import Game from '../components/game';
+import GameForm from '../components/gameForm';
+import Player from '../components/player'
 
 describe('Game', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Game />)
+    wrapper = shallow(<Game />);
   });
 
   it('renders gameForm component', () => {
-    expect(wrapper.containsMatchingElement(<GameForm/>)).toEqual(true)
+    expect(wrapper.containsMatchingElement(<GameForm/>)).toEqual(true);
   });
 
   describe('rendering player components', () => {

@@ -1,4 +1,4 @@
-import deal from './deck';
+import deal from '../deck';
 import seedrandom from 'seedrandom';
 
 describe('deal', () => {
@@ -19,9 +19,5 @@ describe('deal', () => {
         expect(card).toHaveProperty('rank');
       });
     });
-  });
-
-  it('each array is a slice of the deck() fn', () => {
-
   });
 });

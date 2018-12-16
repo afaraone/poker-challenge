@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import seedrandom from 'seedrandom';
 import { mount } from 'enzyme';
-import Game from './game';
-import Player from './player';
-import Card from './card';
+import Game from '../components/game';
+import Player from '../components/player';
+import Card from '../components/card';
 
 describe('Feature test', () => {
   let wrapper;
@@ -20,10 +20,10 @@ describe('Feature test', () => {
       wrapper.find('#num-players-text').simulate('change', {target: {value: '3'}});
       wrapper.find('#num-cards-text').simulate('change', {target: {value: '5'}});
       wrapper.find('#play-btn').simulate('click');
-    })
+    });
 
     it('it renders 3 players', () => {
-      expect(wrapper.find(Player)).toHaveLength(3)
+      expect(wrapper.find(Player)).toHaveLength(3);
     });
 
     it('each player has 5 cards', () => {
@@ -51,14 +51,14 @@ describe('Feature test', () => {
       wrapper.find('#num-players-text').simulate('change', {target: {value: '5'}});
       wrapper.find('#num-cards-text').simulate('change', {target: {value: '14'}});
       wrapper.find('#play-btn').simulate('click');
-      expect(wrapper.contains(<h2>Not possible!</h2>)).toEqual(true)
-    })
+      expect(wrapper.contains(<h2>Not possible!</h2>)).toEqual(true);
+    });
 
     it('renders error message if combination equal to 0', () => {
       wrapper.find('#num-players-text').simulate('change', {target: {value: '5'}});
       wrapper.find('#num-cards-text').simulate('change', {target: {value: '0'}});
       wrapper.find('#play-btn').simulate('click');
-      expect(wrapper.contains(<h2>Not possible!</h2>)).toEqual(true)
-    })
+      expect(wrapper.contains(<h2>Not possible!</h2>)).toEqual(true);
+    });
   });
 });
