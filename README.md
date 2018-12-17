@@ -62,3 +62,35 @@ Time:        4.815s
 Ran all test suites.
 
 ```
+
+## Approach
+This app is made up of React Components (in `src/components`) and functions (in `src`).
+
+`deck.js` has methods concerned with creating hands, which are arrays of card objects:
+`[{rank: 4, suit: 0}, {rank: 8, suit: 0}, {rank: 3, suit: 2}, {rank: 6, suit: 3}]`.
+
+It has one public method `deal` which takes two arguments: number of players, and number of cards, and returns an array of hands:
+
+```
+console.log(deal(2,4))
+[[{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}],
+[{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}]]
+```
+Hands are all sorted using `sortHand`.
+
+`score.js` is concerned with calculating the score for a hand. The public method `getScore` takes a hand as an argument and returns score as an integer.
+```
+console.log(getScore([{rank: 2, suit: 1}, {rank: 4, suit: 2}, {rank: 3, suit: 2}]))
+49
+```
+It uses private methods to calculate bonuses for pairs, three of a kinds and straights.
+
+`createPlayerObjects.js` create player objects, which have `hand`, `score` and `winner` properties. The public method `createPlayerObjects` takes an array of hands (the return value from `deal`) and returns an an array of player objects.
+
+```
+let dealt cards =  [[{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}],
+                   [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}]]
+console.log(createPlayerObjects(dealtCards))
+[{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false},
+{hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58, winner: true}]
+```
