@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Build Status](https://travis-ci.com/afaraone/poker-challenge.svg?branch=master)](https://travis-ci.com/afaraone/poker-challenge)
+
 # Poker Tech Test
 ## Description
 A simple card-playing app, where users can select the number of players and the number of cards for each hand. Scores are displayed for each hand along with a label for the winner.
@@ -94,3 +95,31 @@ console.log(createPlayerObjects(dealtCards))
 [{hand: [{rank: 1, suit: 2}, {rank: 2, suit: 2}, {rank: 3, suit: 2}, {rank: 4, suit: 2}], score: 50, winner: false},
 {hand: [{rank: 3, suit: 2}, {rank: 4, suit: 2}, {rank: 5, suit: 2}, {rank: 6, suit: 2}], score: 58, winner: true}]
 ```
+These three functions cover the bulk of the functionality. This way, the React components are focused on the presentational aspect. `Game` is the root container component, it stores the state (player objects). `GameForm` manages the textboxes. `Player` and `Card` are the presentational components.
+
+## Reflection
+
+I think I overcomplicated some of the functions, such as the `deal` method. However I think I separated the concerns fairly well. I hope this means it can be scalable for future functionality (new scoring rules, new types of cards etc).
+
+Javascript lacks quite a lot of the built-in functions that other languages use, especially the `shuffle` function. I should perhaps have made use of dependencies instead of attempting to "reinvent the wheel".
+
+Originally, I made the app using Javascript ES6 classes. [link](https://github.com/afaraone/poker-challenge/commit/e81b234ff9f24741527aaf28e639b4aa270273ee) However, when attempting to integrate this into React, I realised that this is not recommended. e.g:
+```
+class Game extends Component {
+  constructor(props) {
+   super(props); 
+   this.state = {
+    deck = new Deck();   // Initialising a class.
+    hand = this.state.deck.deal(3, 5) // This does not work.
+   };
+  };
+};
+```
+As a result, I had to spend some time redesigning my app.
+
+## Further Features
+
+ - Refactor the `deal` method. 
+ - Add `name` property to Player objects. This would make the website more clear.
+ - Integrate a database to record all the scores.
+ - Add some CSS styling.
