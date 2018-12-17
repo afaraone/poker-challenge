@@ -25,6 +25,7 @@ The app is deployed using CI/CD via TravisCI and Heroku. [Link](https://poker-ch
  - Run `npm install` to install dependencies.
  - Run `npm start` to launch a local server.
  - Run `npm test` to launch test-runner. Run `npm run coverage` to view coverage.
+ - N.B. App was created on a Linux machine. Please let me know if if it doesn't work on Macbooks.
 
 ## Testing
 Unit tests and feature tests were made for this app. Tests are stored in `src/__tests__`
